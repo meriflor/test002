@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlue"
+    tools:context=".SignUp">
+
+    <ImageView
+        android:id="@+id/bg3"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Sign Up"
+        android:textColor="@color/lightBlue"
+        android:textSize="35sp"
+
+        app:layout_constraintBottom_toBottomOf="@id/bg3"
+        app:layout_constraintStart_toStartOf="@id/bg3"
+        app:layout_constraintTop_toTopOf="@id/bg3"
+        app:layout_constraintVertical_bias="0.373" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/user"
+        app:layout_constraintBottom_toBottomOf="@id/signup"
+        app:layout_constraintStart_toEndOf="@id/signup"
+        app:layout_constraintTop_toTopOf="@id/signup" />
+
+    <Button
+        android:id="@+id/instructor_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Instructor"
+        android:textAllCaps="false"
+        android:textColor="@color/lightBlue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/bg3"
+        app:layout_constraintStart_toStartOf="@id/bg3"
+        app:layout_constraintTop_toBottomOf="@id/bg3" />
+
+    <Button
+        android:id="@+id/student_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Student"
+        android:textColor="@color/lightBlue"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/instructor_btn"
+        app:layout_constraintStart_toStartOf="@id/instructor_btn"
+        app:layout_constraintTop_toBottomOf="@id/instructor_btn" />
+
+    <TextView
+        android:id="@+id/tv_or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="OR"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_btn" />
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/tv_or"
+        app:layout_constraintEnd_toStartOf="@id/tv_or"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_or" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/tv_or"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_or"
+        app:layout_constraintTop_toTopOf="@id/tv_or" />
+
+    <TextView
+        android:id="@+id/tv_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/quicksand_light"
+        android:text="Already have an account?"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_signin"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_or" />
+
+    <TextView
+        android:id="@+id/tv_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Sign in"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/tv_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_account"
+        app:layout_constraintTop_toTopOf="@id/tv_account" />
+
+    <Button
+        android:id="@+id/btn_google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button"
+        android:drawableLeft="@drawable/icon_google"
+        android:fontFamily="@font/quicksand_bold"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:text="Google"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/lightBlue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@id/btn_facebook"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_account" />
+
+    <Button
+        android:id="@+id/btn_facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/button"
+        android:drawableLeft="@drawable/icon_facebook"
+        android:fontFamily="@font/quicksand_bold"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:text="Facebook"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/lightBlue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_google"
+        app:layout_constraintTop_toBottomOf="@id/tv_account" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
