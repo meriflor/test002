@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="input_box_style">
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:background">@drawable/input_box</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColorHint">@color/greyBlue</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="input_style">
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColorHint">#9ba4b4</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+
+</resources>
