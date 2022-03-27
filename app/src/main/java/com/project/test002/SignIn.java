@@ -6,11 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -89,7 +87,7 @@ public class SignIn extends AppCompatActivity {
 
                     if(task.isSuccessful()){
                         mLoadingBar.dismiss();
-                        Intent intent = new Intent(SignIn.this,MainActivity.class);
+                        Intent intent = new Intent(SignIn.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }else{
