@@ -1,7 +1,9 @@
 package com.project.test002;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -9,15 +11,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class CreateAnAccount extends AppCompatActivity {
 
     private TextView signIn;
-    private EditText name;
-    private EditText signupEmail;
-    private EditText signupPass;
-    private EditText retypePass;
-    private Button signupButton;
+    private EditText et_fullName;
+    private EditText et_email;
+    private EditText et_password;
+    private EditText et_retype_password;
+    private Button btn_signup;
+    private FirebaseAuth mAuth;
+    private ProgressDialog mLoadingBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,63 +37,87 @@ public class CreateAnAccount extends AppCompatActivity {
 
 
         signIn = findViewById(R.id.tv_signin);
-        name = findViewById(R.id.et_fullName);
-        signupEmail = findViewById(R.id.et_email);
-        signupPass = findViewById(R.id.et_password);
-        retypePass = findViewById(R.id.et_retype_password);
-        signupButton = findViewById(R.id.btn_signup);
+        et_fullName = findViewById(R.id.et_fullName);
+        et_email = findViewById(R.id.et_email);
+        et_password = findViewById(R.id.et_password);
+        et_retype_password = findViewById(R.id.et_retype_password);
+        btn_signup = findViewById(R.id.btn_signup);
+        mAuth = FirebaseAuth.getInstance();
+        mLoadingBar = new ProgressDialog(CreateAnAccount.this);
 
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkCrededentials();
+            }
+        });
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreateAnAccount.this, SignIn.class);
-                startActivity(intent);
+
             }
         });
 
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
 
-                if(validateData()) {
-                    Intent intent = new Intent(CreateAnAccount.this, SignIn.class);
-                    startActivity(intent);
-
-                }
-            }
-        });
     }
-    private boolean validateData(){
-        if(name.getText().toString().isEmpty()){
-            name.setError("Enter your name");
-            return false;
-        }
-        if(signupEmail.getText().toString().isEmpty()) {
-            signupEmail.setError(" Enter Email address");
-        }
-            if(!Patterns.EMAIL_ADDRESS.matcher(signupEmail.getText().toString()).matches()){
-                signupEmail.setError(" Enter valid email address");
-                return false;
-            }
 
+    private void checkCrededentials() {
+        String userName = et_fullName.getText().toString();
+        String email = et_email.getText().toString();
+        String password = et_password.getText().toString();
+        String conformPassword = et_retype_password.getText().toString();
 
-        if(signupPass.getText().toString().isEmpty()){
-            signupPass.setError("Enter password");
-            return false;
+        if (userName.isEmpty() || userName.length() < 7) {
+            showError(et_fullName, "Your user name is not valid!");
 
         }
-        if(signupPass.getText().toString().length()<8){
-            signupPass.setError("Password is too weak.");
-            return false;
+        else if (email.isEmpty() || !email.contains("@"))
+        {
+            showError(et_email, "Email is not valid!");
+        }
+        else if (password.isEmpty()||password.length()<7)
+        {
+            showError(et_password," Password must be seven character");
+        }
+        else if(conformPassword.isEmpty()||!conformPassword.equals(password))
+        {
+            showError(et_retype_password,"Not match");
+        }
+        else {
+            mLoadingBar.setTitle("Register");
+            mLoadingBar.setMessage("Please wait while checking your credentials");
+            mLoadingBar.setCanceledOnTouchOutside(false);
+            mLoadingBar.show();
+           // Toast.makeText(this,"Call registration method",Toast.LENGTH_SHORT).show();
+            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(CreateAnAccount.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                        mLoadingBar.dismiss();
+                    Intent intent = new Intent(CreateAnAccount.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(CreateAnAccount.this, task.getException().toString(),Toast.LENGTH_SHORT).show();
+                    }
+                }
 
+
+
+              }
+            );
         }
-        if (!retypePass.getText().toString().equals(signupPass.getText().toString())){
-            retypePass.setError("Password does not match. Try again!" +
-                    "");
-            return false;
-        }
-        return true;
+    }
+
+
+    private void showError(EditText input, String s) {
+
+        input.setError(s);
+        input.requestFocus();
     }
 }
+
