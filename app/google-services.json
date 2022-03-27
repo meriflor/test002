@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "10331715643",
+    "project_id": "anauy-haha",
+    "storage_bucket": "anauy-haha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10331715643:android:9f686c7b4e28d7b8dd841e",
+        "android_client_info": {
+          "package_name": "com.project.test002"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10331715643-3chmhba7lgb0v7c3a9i07ajsrsnr7lqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.test002",
+            "certificate_hash": "ed1124a431079baecb3e9cba18d7d3c93c02752f"
+          }
+        },
+        {
+          "client_id": "10331715643-hi27sdumf87l0d886fj3umlprhmk07pk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3Oj-ivFWdCdAw5tBkrN14s80xiGpWc0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10331715643-hi27sdumf87l0d886fj3umlprhmk07pk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
