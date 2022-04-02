@@ -17,5 +17,16 @@
         <item name="android:textColor">@color/blue</item>
     </style>
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#14274E</item>
+        <item name="colorPrimaryVariant">#14274E</item>
+        <item name="colorAccent">#9BA4B4</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 
 </resources>

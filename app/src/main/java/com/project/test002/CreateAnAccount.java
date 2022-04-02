@@ -96,7 +96,7 @@ public class CreateAnAccount extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Toast.makeText(CreateAnAccount.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                         mLoadingBar.dismiss();
-                    Intent intent = new Intent(CreateAnAccount.this, MainActivity.class);
+                    Intent intent = new Intent(CreateAnAccount.this, Teacher_Homepage.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     }

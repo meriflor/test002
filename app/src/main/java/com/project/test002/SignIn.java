@@ -87,7 +87,7 @@ public class SignIn extends AppCompatActivity {
 
                     if(task.isSuccessful()){
                         mLoadingBar.dismiss();
-                        Intent intent = new Intent(SignIn.this, MainActivity.class);
+                        Intent intent = new Intent(SignIn.this, Teacher_Homepage.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }else{
