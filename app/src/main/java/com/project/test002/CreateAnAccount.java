@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreateAnAccount extends AppCompatActivity {
 
@@ -42,6 +43,7 @@ public class CreateAnAccount extends AppCompatActivity {
         et_retype_password = findViewById(R.id.et_retype_password);
         btn_signup = findViewById(R.id.btn_signup);
         mAuth = FirebaseAuth.getInstance();
+        DbQuery.g_firestore = FirebaseFirestore.getInstance();
         mLoadingBar = new ProgressDialog(CreateAnAccount.this);
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
@@ -95,10 +97,25 @@ public class CreateAnAccount extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(CreateAnAccount.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                        mLoadingBar.dismiss();
-                    Intent intent = new Intent(CreateAnAccount.this, Teacher_Homepage.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+
+                       DbQuery.createUserData(email, userName, new MyCompleteListener(){
+
+                           @Override
+                           public void onSuccess() {
+
+                               mLoadingBar.dismiss();
+                               Intent intent = new Intent(CreateAnAccount.this, Teacher_Homepage.class);
+                               intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                               startActivity(intent);
+                           }
+
+                           @Override
+                           public void onFailure() {
+                                Toast.makeText(CreateAnAccount.this,"Something went wrong!",Toast.LENGTH_SHORT).show();
+                               mLoadingBar.dismiss();
+                           }
+                       });
+
                     }
                     else{
                         Toast.makeText(CreateAnAccount.this, task.getException().toString(),Toast.LENGTH_SHORT).show();

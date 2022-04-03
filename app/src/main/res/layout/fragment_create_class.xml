@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateClassFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/etClassName"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/input_box"
+        android:layout_marginTop="100dp"
+        android:hint="Enter Class Name"/>
+    <EditText
+        android:id="@+id/etSubject"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/input_box"
+        android:layout_marginTop="160dp"
+        android:hint="Enter Subject Name"/>
+    <EditText
+        android:id="@+id/etRoom"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/input_box"
+        android:layout_marginTop="220dp"
+        android:hint="Enter Room"/>
+
+    <EditText
+        android:id="@+id/etSection"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/input_box"
+        android:layout_marginTop="280dp"
+        android:hint="Enter Section Name"/>
+
+    <Button
+        android:id="@+id/createBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="350dp"
+        android:text="Create"
+        android:textColor="@color/white"
+        android:background="@drawable/button"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        />
+</FrameLayout>

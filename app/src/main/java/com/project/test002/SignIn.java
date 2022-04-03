@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignIn extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ public class SignIn extends AppCompatActivity {
         et_email = findViewById(R.id.et_email);
         et_password = findViewById(R.id.et_password);
         mAuth = FirebaseAuth.getInstance();
+        DbQuery.g_firestore = FirebaseFirestore.getInstance();
         mLoadingBar = new ProgressDialog(SignIn.this);
 
 
